@@ -1,0 +1,16 @@
+spring:
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisPG9Dialect
+
+
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://192.168.1.141:5432/infrastructure
+    username: hfcb
+    password: hfcb
+    driver-class-name: org.postgresql.Driver
