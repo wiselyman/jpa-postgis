@@ -89,3 +89,6 @@ CommandLineRunner geometryQuery(CityRepository cityRepository){
 
 我们在`cityRepository`中使用了`hibernate-spatial`中的空间函数`equals`，具体空间函数列表请查看
 [http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#spatial-configuration-dialect](http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#spatial-configuration-dialect)
+
+### 8 源码地址
+[https://github.com/wiselyman/jpa-postgis](https://github.com/wiselyman/jpa-postgis)
