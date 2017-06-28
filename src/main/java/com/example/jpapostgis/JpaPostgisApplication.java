@@ -1,7 +1,9 @@
 package com.example.jpapostgis;
 
+import com.bedatadriven.jackson.datatype.jts.JtsModule;
 import com.example.jpapostgis.domain.City;
 import com.example.jpapostgis.repository.CityRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.WKTReader;
@@ -19,6 +21,13 @@ public class JpaPostgisApplication {
 	@Bean
 	public WKTReader wktReader(){
 		return new WKTReader();
+	}
+
+	@Bean
+	public ObjectMapper objectMapper(){
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.registerModule(new JtsModule());
+		return objectMapper;
 	}
 
 	//@Bean
@@ -46,7 +55,7 @@ public class JpaPostgisApplication {
 
 	}
 
-	@Bean
+	//@Bean
 	CommandLineRunner geometryQuery(CityRepository cityRepository){
 		return e -> {
 			Geometry point = wktReader().read("POINT (117.2 31.8)");
