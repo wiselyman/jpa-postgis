@@ -200,3 +200,6 @@ public class CityController {
 
 ```
 这时我们实现了自动的Geometry和geojson数据的转换。
+
+源码地址：
+[https://github.com/wiselyman/jpa-postgis](https://github.com/wiselyman/jpa-postgis)
