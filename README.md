@@ -100,7 +100,7 @@ CommandLineRunner geometryQuery(CityRepository cityRepository){
 ### 8 源码地址
 [https://github.com/wiselyman/jpa-postgis](https://github.com/wiselyman/jpa-postgis)
 
-## Spring Boot下空间字段(Geometry)与geojson的自动转换
+## Spring Boot(MVC)下空间字段(Geometry)与geojson的自动转换
 
 在上一篇文章[利用hibernate-spatial让Spring Data JPA支持空间数据](http://www.wisely.top/2017/06/26/hibernate-spatial-spring-data-jpa/)，我们使用`hibernate spatial`,`spring data jpa`成功支持空间字段的映射与增删查改。但是我们目前面临的问题是客户端传过来的json数据如何转换为Geometry(Point、LineString)，后台的Geometry如何直接转换为JSON。在GIS的世界里有一个标准的GIS JSON格式叫做`geojson`。在本文将使用`geojson`格式与Geometry对象互相转换。
 这里我们的思路是Spring Boot为我们自动注册了`MappingJackson2HttpMessageConverter`，在`org.springframework.boot.autoconfigure.web.JacksonHttpMessageConvertersConfiguration`如：
@@ -143,7 +143,7 @@ public ObjectMapper objectMapper(){
 
 }
 ```
-这个第三方目前有个bug就是不支持空间坐标系，在一个单一的系统里一般情况下坐标系应该也是一定的，所以不支持问题也不大，所以我们将前面例子的字段映射修改为，：
+这个第三方依赖目前有个bug就是不支持空间坐标系，在一个单一的系统里一般情况下坐标系应该也是一定的，所以不支持问题也不大，所以我们将前面例子的字段映射修改为，：
 ```java
 //@Column(columnDefinition = "geometry(Point,4326)")
 @Column(columnDefinition = "geometry(Point)")
